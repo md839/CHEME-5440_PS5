@@ -1,0 +1,64 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2511
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 ArialMT;}
+{\colortbl;\red255\green255\blue255;\red26\green26\blue26;\red255\green255\blue255;\red140\green0\blue236;
+\red0\green0\blue255;}
+{\*\expandedcolortbl;;\cssrgb\c13333\c13333\c13333;\cssrgb\c100000\c100000\c100000;\cssrgb\c62745\c12549\c94118;
+\cssrgb\c0\c0\c100000;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\sl328\partightenfactor0
+
+\f0\fs26\fsmilli13333 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 a=10;\
+n=1;\
+\pard\pardeftab720\sl220\partightenfactor0
+
+\fs20 \cf2 \
+\pard\pardeftab720\sl328\partightenfactor0
+
+\fs26\fsmilli13333 \cf2 \
+syms \cf4 \strokec4 u(v)\cf2 \strokec2 \
+ode1 = diff(u,v) == a/(1+v^n)-u;\
+ode1(v) = diff(u(v),v) == a/(1+v^n)-u(v);\
+usol(v) = dsolve(ode1); \
+\pard\pardeftab720\sl220\partightenfactor0
+
+\fs20 \cf2 \
+\pard\pardeftab720\sl328\partightenfactor0
+
+\fs26\fsmilli13333 \cf2 \
+syms \cf4 \strokec4 v(u)\cf2 \strokec2 \
+ode2 = diff(v,u) == a/(1+u^n)-v;\
+ode2(u) = diff(v(u),u) == a/(1+u^n)-v(u);\
+vsol(u) = dsolve(ode2);\
+\pard\pardeftab720\sl220\partightenfactor0
+
+\fs20 \cf2 \
+\pard\pardeftab720\sl328\partightenfactor0
+
+\fs26\fsmilli13333 \cf2 \
+x1range = [0,20,15];\
+x2range = [0,20,15];\
+x0 = [[10,10],[0,0]];\
+tspan = [0.0,10.0];\
+\pard\pardeftab720\sl220\partightenfactor0
+
+\fs20 \cf2 \
+\pard\pardeftab720\sl328\partightenfactor0
+
+\fs26\fsmilli13333 \cf2 \
+[u,v] = ode45(three, tspan, x0);\
+phaseplot(three, x1range, x2range, t==tspan, clines==true, norm==true, scale==0.5)\
+\pard\pardeftab720\sl220\partightenfactor0
+
+\fs20 \cf2 \
+\pard\pardeftab720\sl328\partightenfactor0
+
+\fs26\fsmilli13333 \cf2 \
+\pard\pardeftab720\sl328\partightenfactor0
+\cf5 \strokec5 function \cf2 \strokec2 [dudt, dvdt] = three(x1, x2)\
+    n = 1;\
+    dudt = 10/(1+x2^n)-x1;\
+    dvdt = 10/(1+x1^n)-x2;\
+\cf5 \strokec5 end\cf2 \strokec2 \
+}
